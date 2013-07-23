@@ -15,10 +15,10 @@ fi
 
 yum install -y openstack-packstack
 packstack --gen-answer-file=ANSWER_FILE
-sed -i `s/PW=.*/PW=dog8code/g` ANSWER_FILE
-sed -i `s/TOKEN=.*/TOKEN=dog8code/g` ANSWER_FILE
+sed -i 's/PW=.*/PW=dog8code/g' ANSWER_FILE
+sed -i 's/TOKEN=.*/TOKEN=dog8code/g' ANSWER_FILE
 
 #disable quantum/neutron 
-sed -i `s/CONFIG_QUANTUM_INSTALL=y/CONFIG_QUANTUM_INSTALL=n/g` ANSWER_FILE
+sed -i 's/CONFIG_QUANTUM_INSTALL=y/CONFIG_QUANTUM_INSTALL=n/g' ANSWER_FILE
 
 #packstack --answer-file=ANSWER_FILE
