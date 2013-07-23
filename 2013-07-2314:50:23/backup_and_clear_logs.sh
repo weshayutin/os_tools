@@ -2,9 +2,8 @@
 
 date_time=`date +%F%T`
 
-function backup_log {
+fucntion backup_log {
   echo "backing up log"
-  echo $date_time
   mkdir $date_time
   cp * $date_time
 }
@@ -15,13 +14,11 @@ function clear_log {
 }
 
 
-for dir in nova cinder keystone glance; do
+for dir in nova cinder keystone glance
+do
   echo "In dir /var/log/$dir"
-  if [ -d /var/log/$dir ]; then
-    pushd /var/log/$dir
-    backup_log
-    clear_log
-    popd
-  fi
+  pushd /var/log/$dir
+  backup_log
+  clear_log
 done
 
