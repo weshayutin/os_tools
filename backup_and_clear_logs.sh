@@ -1,6 +1,6 @@
 #!/usr/bin/bash
 
-date_time=`date +%F%T`
+date_time=`date +%F-%T`
 
 function backup_log {
   echo "backing up log"
