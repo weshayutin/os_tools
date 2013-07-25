@@ -7,8 +7,8 @@ dd if=/dev/zero of=cinder-volumes bs=1 count=0 seek=2G
 sudo losetup /dev/loop2 cinder-volumes
 sudo pvcreate /dev/loop2
 sudo vgcreate cinder-volumes /dev/loop2
-sudo service cinder-volume restart
-sudo service cinder-api restart
+sudo service openstack-cinder-volume restart
+sudo service openstack-cinder-api restart
 
 #cinder create --display_name test 1
 cinder list
