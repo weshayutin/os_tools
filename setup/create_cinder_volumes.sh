@@ -1,4 +1,4 @@
-#!/usr/bin/bash
+#!/bin/bash
 if [ ! -d "/root/cinder-volumes" ]; then 
   mkdir -p /root/cinder-volumes
 fi
