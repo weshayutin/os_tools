@@ -1,0 +1,12 @@
+{
+    "name": "centos-packstack",
+    "servers": [
+        {
+            "hostname": "centos-packstack",
+            "memory": "4",
+            "gateway": "true",
+            "original_xml": "/root/centos64.xml",
+            "create_cow": "true"
+        }
+    ]
+}
