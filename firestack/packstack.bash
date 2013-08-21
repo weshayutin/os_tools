@@ -7,18 +7,21 @@ rake rhel:build_packstack --trace
 rake rhel:create_rpm_repo --trace
 
 #remove local rpms, add new rpms, recreate repo
-rm -Rf /var/www/html/repos/*
-scp -rv root@`rake kytoon:ip`:/var/www/html/repos/* /var/www/html/repos/
+rm -Rf /var/www/html/repos/packstack/*.rpm
+scp -rv root@`rake kytoon:ip`:/var/www/html/repos/*.rpm /var/www/html/repos/packstack/
 popd
 
+#kill the old vm
+rake kytoon:delete
+
 #recreate the repodata locally to avoid yum errors
-rm -Rf /var/www/html/repos/repodata
-pushd /var/www/html/repos
+rm -Rf /var/www/html/repos/packstack/repodata
+pushd /var/www/html/repos/packstack
 createrepo .
 popd
 
 
-if [ `ls /var/www/html/repos | wc -l` == 3 ];then 
+if [ `ls /var/www/html/repos | wc -l` == 4 ];then 
  echo "found 3"
  mkdir -p  /var/www/html/backups/$(date +%F)
  cp -Rv /var/www/html/repos/* /var/www/html/backups/$(date +%F)
