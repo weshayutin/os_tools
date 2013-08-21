@@ -18,3 +18,15 @@ createrepo .
 popd
 
 
+if [ `ls /var/www/html/repos | wc -l` == 3 ];then 
+ echo "found 3"
+ mkdir -p  /var/www/html/backups/$(date +%F)
+ cp -Rv /var/www/html/repos/* /var/www/html/backups/$(date +%F)
+else
+ echo "packstack build failed" | mail -s "packstack build failed on $HOSTNAME" whayutin@redhat.com
+fi
+
+for i in `find /var/www/html/backups -maxdepth 1 -type d -mtime +30 -print`; do echo -e "Deleting directory $i";rm -rf $i; done
+
+
+
