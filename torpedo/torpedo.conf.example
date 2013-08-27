@@ -1,0 +1,18 @@
+#move to ~/.torpedo.conf
+server_build_timeout: 240
+test_ssh: false
+ssh_timeout: 120
+ping_timeout: 220
+network_label: novanetwork
+network_namespace: 
+test_rebuild_server: true
+test_create_image: true
+test_resize_server: false
+test_revert_resize_server: false
+test_hostid_on_resize: false
+test_soft_reboot_server: true
+test_hard_reboot_server: true
+test_admin_password: false
+flavor_ref: 1
+keypair: /root/test.pem
+keyname: test
