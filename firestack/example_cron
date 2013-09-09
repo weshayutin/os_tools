@@ -1,0 +1,4 @@
+SHELL=/bin/bash
+HOME=/root/
+5 * * * * source ~/.bashrc && cd /root/firestack && ./firestack_build_package.sh packstack > /var/log/packstack_build.log
+35 1 * * * source ~/.bashrc &&  ./firestack_build_package.sh torpedo

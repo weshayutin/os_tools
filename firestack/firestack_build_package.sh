@@ -6,14 +6,14 @@ PACKAGE=$1
 export GROUP_TYPE=libvirt
 export DISTRO_NAME=centos
 export DEBUG=True
-export LIBVIRT_USE_SUDO=True
+export LIBVIRT_USE_SUDO=False
 export RAILS_ENV=production
 
 trap "rake kytoon:delete" INT TERM EXIT # cleanup the group on exit
 
 kytoon list
-#rake -s kytoon:create GROUP_CONFIG=/root/firestack/config/server_group.json --trace
-GROUP_CONFIG=config/server_group.json rake -s kytoon:create --trace
+GROUP_CONFIG=config/server_group.json rake kytoon:create --trace >> /var/log/packstack_build.log
+#GROUP_CONFIG=config/server_group.json rake -s kytoon:create --trace
 if [ $? -ne 0 ]; then
  echo "FAILED TO kytoon:create"
  exit
